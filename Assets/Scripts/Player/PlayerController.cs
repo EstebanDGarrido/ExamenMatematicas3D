@@ -3,12 +3,19 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float runSpeed = 5f;
-    public float rotationSpeed = 150f;
-
+    public float runSpeed = 3f;
+    public float rotationSpeed = 80f;
     public Animator animator;
-
     private float x, y;
+    private Rigidbody rb;
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        rb = GetComponent<Rigidbody>();
+    }
 
     void Update()
     {
