@@ -9,6 +9,10 @@ public class QuestionManager : MonoBehaviour
     public QuestionList questionList;
     private int currentQuestionIndex = 0;
     public AnswerObject[] answerObjects;
+    private int correctAnswers = 0;
+    private int incorrectAnswers = 0;
+    public GameObject resultsPanel;
+    public TextMeshProUGUI resultsText;
 
     void Start()
     {
@@ -71,7 +75,7 @@ public class QuestionManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Examen terminado");
+            ShowResults();
         }
     }
 
@@ -80,13 +84,28 @@ public class QuestionManager : MonoBehaviour
         if (isCorrect)
         {
             Debug.Log("Correcto!");
+            correctAnswers++;
         }
         else
         {
             Debug.Log("Incorrecto");
+            incorrectAnswers++;
         }
 
         NextQuestion();
+    }
+
+    void ShowResults()
+    {
+        int total = correctAnswers + incorrectAnswers;
+        float percentage = (float)correctAnswers / total * 100f;
+
+        resultsPanel.SetActive(true);
+
+        resultsText.text =
+            "Correctas: " + correctAnswers + "\n" +
+            "Incorrectas: " + incorrectAnswers + "\n" +
+            "Puntaje: " + percentage.ToString("F1") + "%";
     }
 
     private void Update()
