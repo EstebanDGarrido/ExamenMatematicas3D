@@ -1,0 +1,19 @@
+{
+  "questions": [
+    {
+      "question": "¿Cuánto es 4 x 2?",
+      "correctAnswer": "8",
+      "incorrectAnswers": ["6", "10", "12"]
+    },
+    {
+      "question": "¿Cuánto es 5 + 3?",
+      "correctAnswer": "8",
+      "incorrectAnswers": ["7", "9", "6"]
+    },
+    {
+      "question": "¿Cuánto es 10 - 4?",
+      "correctAnswer": "6",
+      "incorrectAnswers": ["5", "7", "8"]
+    }
+  ]
+}
