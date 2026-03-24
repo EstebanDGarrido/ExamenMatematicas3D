@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static questionList;
+using TMPro;
 
 public class QuestionManager : MonoBehaviour
 {
+    public TextMeshProUGUI questionText;
     public QuestionList questionList;
     private int currentQuestionIndex = 0;
 
@@ -30,6 +32,9 @@ public class QuestionManager : MonoBehaviour
     void ShowCurrentQuestion()
     {
         QuestionData q = questionList.questions[currentQuestionIndex];
+
+        questionText.text = q.question;
+
         Debug.Log("Pregunta: " + q.question);
     }
 
