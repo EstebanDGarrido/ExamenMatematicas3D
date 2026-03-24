@@ -9,14 +9,6 @@ public class PlayerController : MonoBehaviour
     private float x, y;
     private Rigidbody rb;
 
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        rb = GetComponent<Rigidbody>();
-    }
-
     void Update()
     {
         var keyboard = Keyboard.current;
