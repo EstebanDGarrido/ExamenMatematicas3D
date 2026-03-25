@@ -6,13 +6,13 @@ using TMPro;
 public class QuestionManager : MonoBehaviour
 {
     public TextMeshProUGUI questionText;
+    public TextMeshProUGUI resultsText;
     public QuestionList questionList;
-    private int currentQuestionIndex = 0;
+    public GameObject resultsPanel;
     public AnswerObject[] answerObjects;
+    private int currentQuestionIndex = 0;
     private int correctAnswers = 0;
     private int incorrectAnswers = 0;
-    public GameObject resultsPanel;
-    public TextMeshProUGUI resultsText;
 
     void Start()
     {
@@ -23,7 +23,6 @@ public class QuestionManager : MonoBehaviour
     void LoadQuestions()
     {
         TextAsset jsonFile = Resources.Load<TextAsset>("questions");
-
         if (jsonFile != null)
         {
             questionList = JsonUtility.FromJson<QuestionList>(jsonFile.text);
@@ -37,17 +36,13 @@ public class QuestionManager : MonoBehaviour
     void ShowCurrentQuestion()
     {
         QuestionData q = questionList.questions[currentQuestionIndex];
-
         questionText.text = q.question;
-
         string[] answers = new string[4];
         answers[0] = q.correctAnswer;
-
         for (int i = 0; i < q.incorrectAnswers.Length; i++)
         {
             answers[i + 1] = q.incorrectAnswers[i];
         }
-
         for (int i = 0; i < answers.Length; i++)
         {
             int randomIndex = Random.Range(0, answers.Length);
@@ -55,7 +50,6 @@ public class QuestionManager : MonoBehaviour
             answers[i] = answers[randomIndex];
             answers[randomIndex] = temp;
         }
-
         for (int i = 0; i < answerObjects.Length; i++)
         {
             answerObjects[i].answerText = answers[i];
@@ -68,7 +62,6 @@ public class QuestionManager : MonoBehaviour
     public void NextQuestion()
     {
         currentQuestionIndex++;
-
         if (currentQuestionIndex < questionList.questions.Length)
         {
             ShowCurrentQuestion();
@@ -91,7 +84,6 @@ public class QuestionManager : MonoBehaviour
             Debug.Log("Incorrecto");
             incorrectAnswers++;
         }
-
         NextQuestion();
     }
 
@@ -99,9 +91,7 @@ public class QuestionManager : MonoBehaviour
     {
         int total = correctAnswers + incorrectAnswers;
         float percentage = (float)correctAnswers / total * 100f;
-
         resultsPanel.SetActive(true);
-
         resultsText.text =
             "Correctas: " + correctAnswers + "\n" +
             "Incorrectas: " + incorrectAnswers + "\n" +

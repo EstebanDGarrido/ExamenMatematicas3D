@@ -3,12 +3,10 @@ using TMPro;
 
 public class AnswerObject : MonoBehaviour
 {
+    private QuestionManager questionManager;
+    public TextMeshPro textMesh;
     public string answerText;
     public bool isCorrect;
-
-    public TextMeshPro textMesh;
-
-    private QuestionManager questionManager;
 
     void Start()
     {
