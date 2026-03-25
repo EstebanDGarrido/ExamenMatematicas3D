@@ -54,7 +54,6 @@ public class QuestionManager : MonoBehaviour
         {
             answerObjects[i].answerText = answers[i];
             answerObjects[i].isCorrect = (answers[i] == q.correctAnswer);
-
             answerObjects[i].UpdateVisual();
         }
     }
@@ -96,15 +95,5 @@ public class QuestionManager : MonoBehaviour
             "Correctas: " + correctAnswers + "\n" +
             "Incorrectas: " + incorrectAnswers + "\n" +
             "Puntaje: " + percentage.ToString("F1") + "%";
-    }
-
-    private void Update()
-    {
-        var keyboard = Keyboard.current;
-        if (keyboard == null) return;
-        if (keyboard.spaceKey.wasPressedThisFrame)
-        {
-            NextQuestion();
-        }
     }
 }

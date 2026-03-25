@@ -20,7 +20,6 @@ public class DrawingBoard : MonoBehaviour
     {
         texture = new Texture2D(textureWidth, textureHeight, TextureFormat.RGBA32, false);
         texture.filterMode = FilterMode.Point;
-
         ClearBoard();
         rawImage.texture = texture;
     }
